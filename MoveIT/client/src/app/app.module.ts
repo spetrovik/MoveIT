@@ -6,17 +6,22 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { Routes } from '@angular/router';
+import { OfferComponent } from './offer/offer.component';
+import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    OfferComponent,
+    OfferDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
     HttpClientModule, 
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot()
   ],
   providers: [],
