@@ -8,13 +8,15 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    public class OfferController : BaseApiController
+    public class OffersController : BaseApiController
     {
         private readonly DataContext _context;
-        public OfferController(DataContext context)
+        public OffersController(DataContext context)
         {
 
             this._context = context;
@@ -39,6 +41,26 @@ namespace API.Controllers
             _context.Offers.Add(offerFinal);
             await _context.SaveChangesAsync();
             return offerFinal;
+        }
+        [HttpGet("offer")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<Offer>>> GetOffers()
+        {
+            return await _context.Offers.ToListAsync();
+        }
+
+      //   [Authorize]
+         //api/users/3 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Offer>> GetOffer(int id)
+        {
+           return await _context.Offers.FindAsync(id); 
+        }
+
+          [HttpGet("offerDetail/{userid}")]
+        public async Task<ActionResult<IEnumerable<Offer>>> GetOfferByUserID(int userid)
+        {
+           return await _context.Offers.Where(x => x.UserId == userid).ToListAsync(); 
         }
     }
 }

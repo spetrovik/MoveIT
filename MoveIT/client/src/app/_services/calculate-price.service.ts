@@ -37,7 +37,7 @@ export class CalculatePriceService {
     this.calculatePrice(model);
     const user: User = JSON.parse(localStorage.getItem('user'));
     model.userID = user.userID
-    return this.http.post(this.baseUrl + 'offer/offers', model).
+    return this.http.post(this.baseUrl + 'offers/offers', model).
     pipe(map((response: Offer) => {
       const offer = response; 
       offer.priceDistance = model.priceDistance;

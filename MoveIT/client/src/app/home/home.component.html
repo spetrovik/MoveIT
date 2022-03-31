@@ -16,3 +16,34 @@
         </div>
     </div>
 </div>
+<div class="container" *ngIf="!registerMode">
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Distance</th>
+                    <th>Price distance</th>
+                    <th>Living Area</th>
+                    <th>Attic Area</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let offer of offers">
+                    <td>{{offer.id}}</td>
+                    <td>{{offer.from}}</td>
+                    <td>{{offer.to}}</td>
+                    <td>{{offer.distance}}</td>
+                    <td>{{offer.priceDistance}}</td>
+                    <td>{{offer.livingArea}}</td>
+                    <td>{{offer.atticArea}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

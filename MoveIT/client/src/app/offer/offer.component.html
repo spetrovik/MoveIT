@@ -1,41 +1,78 @@
 <form [formGroup]="offerForm" (ngSubmit)="offer()" autocomplete="off">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 mt-5">
 
       <div class="form-group">
         <input type="text" class="form-control" formControlName="from" placeholder="From">
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 mt-5">
       <div class="form-group">
         <input type="text" class="form-control" formControlName="to" placeholder="To">
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-3 mt-5">
       <div class="form-group">
         <input id="livingArea" type="number" class="form-control" formControlName="livingArea" placeholder="LivingArea">
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-3 mt-5">
       <div class="form-group">
         <input id="atticArea" type="number" class="form-control" formControlName="atticArea" placeholder="AtticArea">
       </div>
     </div>
+    <div class="form-group mt-5 col-lg-3">
+      <input type="number" class="form-control" formControlName="distance" placeholder="Distance">
+    </div>
   </div>
-  <div class="form-group">
-    <input type="number" class="form-control" formControlName="distance" placeholder="Distance">
-  </div>
- 
-  <div class="form-group text-center">
+
+ <div class="row">
+  <div class="form-group mt-5">
     <button [disabled]="!offerForm.valid" class="btn btn-success mr-2" type="submit">Offer</button>
     <!--  <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button> -->
   </div>
-  <div class="form-group">
+  <div class="form-group mt-5">
     <p>From: {{from}}</p>
     <p>To: {{to}}</p>
    <p>LivingArea: {{livingArea}}</p>
    <p>AticArea: {{atticArea}}</p>
   </div>
+  </div>
+
+  <div class="container">
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Distance</th>
+                    <th>Price distance</th>
+                    <th>Living Area</th>
+                    <th>Attic Area</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let offer of offersByUser">
+                    <td>{{offer.id}}</td>
+                    <td>{{offer.from}}</td>
+                    <td>{{offer.to}}</td>
+                    <td>{{offer.distance}}</td>
+                    <td>{{offer.priceDistance}}</td>
+                    <td>{{offer.livingArea}}</td>
+                    <td>{{offer.atticArea}}</td>
+                    <td>{{offer.username}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
 </form>

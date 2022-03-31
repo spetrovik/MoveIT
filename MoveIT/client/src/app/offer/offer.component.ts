@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from '@angular/google-maps';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
+import { User } from '../_models/user';
 import { CalculatePriceService } from '../_services/calculate-price.service';
 
 declare global {
@@ -27,10 +29,12 @@ export class OfferComponent implements OnInit {
   from:any;
   to:any;
   data: any
-
-  constructor(private calculatePrice : CalculatePriceService,  private router: Router) { }
+  offersByUser: any
+  baseUrl = 'https://localhost:5001/api/';
+  constructor(private calculatePrice : CalculatePriceService,  private router: Router, private http: HttpClient) { }
   ngOnInit(): void {
     this.initializeForm();
+    this.getOffers();
   }
 
   initializeForm(){
@@ -47,7 +51,18 @@ export class OfferComponent implements OnInit {
     this.atticArea = this.offerForm.value.atticArea;
     this.from = this.offerForm.value.from;
     this.to = this.offerForm.value.to;
+    this.getOffers();
   } 
+  getOffers(): void{
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    this.http.get('https://localhost:5001/api/offers/offerDetail/' + user.userID)
+    .subscribe(response => {
+      this.offersByUser = response;
+     // console.log(this.offers);
+    }, error => {
+      console.log(error);
+    });
+  }
   offer(){
    // this.initializeForm();
     this.calculatePrice.offer(this.offerForm.value).subscribe(response => {
