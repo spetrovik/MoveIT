@@ -15,6 +15,11 @@ namespace API.Data
         }
 
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<DistancePrice> DistancePrices {get; set;}
+
+        public DbSet<VolumePrice> VolumePrices{get;set;}
+
+        public DbSet<Offer> Offers {get; set;}
         
     }
 }

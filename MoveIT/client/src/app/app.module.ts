@@ -13,6 +13,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { Routes } from '@angular/router';
 import { OfferComponent } from './offer/offer.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
+import { GoogleMapsModule } from '@angular/google-maps'
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { OfferDetailComponent } from './offer-detail/offer-detail.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

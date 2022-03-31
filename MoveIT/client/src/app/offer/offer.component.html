@@ -1,1 +1,58 @@
-<p>offer works!</p>
+
+<form [formGroup]="offerForm" (ngSubmit)="offer()" autocomplete="off">
+<div class="row">
+<div class="col-lg-6">
+
+    <div class="form-group">
+      <input 
+   
+      type="text" 
+      class="form-control" 
+    formControlName="from" 
+    placeholder="From">
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="form-group">
+    <input    
+    type="text" 
+    class="form-control" 
+  formControlName="to" 
+  placeholder="To">
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <input 
+      
+        type="text" 
+        class="form-control" 
+      formControlName="livingArea" 
+      placeholder="LivingArea">
+    </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <input 
+            type="text" 
+            class="form-control" 
+          formControlName="atticArea" 
+          placeholder="AtticArea">
+        </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input 
+          type="number" 
+          class="form-control" 
+        formControlName="distance" 
+        placeholder="Distance">
+      </div>
+<div class="form-group text-center">
+  <button [disabled]="!offerForm.valid" class="btn btn-success mr-2" type="submit">Offer</button>
+<!--  <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button> -->
+</div>
+</form>
+

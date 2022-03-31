@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220331092901_VolumePrice")]
+    partial class VolumePrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -52,50 +54,6 @@ namespace API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DistancePrices");
-                });
-
-            modelBuilder.Entity("API.Entities.Offer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AtticArea")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Distance")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DistancePricePerCar")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("From")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("LivingArea")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("NumberOfCars")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PriceDistance")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SumPrice")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("To")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("VolumePrice")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Offers");
                 });
 
             modelBuilder.Entity("API.Entities.VolumePrice", b =>
