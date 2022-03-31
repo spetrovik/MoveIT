@@ -34,7 +34,7 @@ namespace API.Controllers
                 DistancePricePerCar = 0,
                 VolumePrice = 0,
                 SumPrice = 0,
-                UserId =1
+                UserId = offer.UserId
             };
             _context.Offers.Add(offerFinal);
             await _context.SaveChangesAsync();
