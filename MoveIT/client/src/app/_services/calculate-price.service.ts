@@ -11,12 +11,12 @@ import { AccountService } from './account.service';
 })
 export class CalculatePriceService {
 
-
+  offerDetail:any
   baseUrl = 'https://localhost:5001/api/';
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient, private accountService: AccountService) { }
+  constructor(private http: HttpClient) { }
 
   calculatePrice(model: Offer){
     if(model.distance < 50)
@@ -36,16 +36,13 @@ export class CalculatePriceService {
   offer(model: any) {
     this.calculatePrice(model);
     const user: User = JSON.parse(localStorage.getItem('user'));
-    this.accountService.setCurrentUser(user);
     model.userID = user.userID
     return this.http.post(this.baseUrl + 'offer/offers', model).
     pipe(map((response: Offer) => {
-      const offer = response;
-      
+      const offer = response; 
       offer.priceDistance = model.priceDistance;
       if(offer){
-        localStorage.setItem('offer', JSON.stringify(offer));
-      //  this.currentUserSource.next(user);
+      this.offerDetail = localStorage.setItem('offer', JSON.stringify(offer));
       console.log(offer);
       }
     }))
