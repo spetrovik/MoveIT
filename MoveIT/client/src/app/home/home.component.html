@@ -1,21 +1,21 @@
 <div class="container mt-5">
-    <div *ngIf="!registerMode" style ="text-align: center;">
+    <div *ngIf="!registerMode">
     <h1></h1>
     <p class></p>
-    <div class="text-center">
+    <div>
     <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
-    <button class="btn btn-info btn-lg">Learn more</button>
 </div>
     </div>
 </div>
 
 <div *ngIf="registerMode" class="container">
-    <div class="row justiy-content-center">
+    <div class="row justiy-content-center offset-5">
         <div class="col-4">
             <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
         </div>
     </div>
 </div>
+<button (click)="openOffers()" class="btn btn-primary btn-lg mt-5">Open offers</button>
 <div class="container" *ngIf="!registerMode">
     <div class="card m-5 p-3">
         <div class="card-body">

@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="/">Move IT</a>
     
-        <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async" >
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ | async" >
           
           <li class="nav-item">
             <a class="nav-link" routerLink="/">Home</a>
@@ -11,28 +11,37 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/offers">Offers</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/detail">Offer Details</a>
+          </li>
         </ul>
         <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
             <a class="dropdown-toogle text-ligt" dropdownToggle>Welcome user</a>
-            <div class="dropdown-menu mt-3" *dropdownMenu="">
+            <div class="dropdown-menu mt-3" *dropdownMenu>
                 <a class="dropdown-item">Edit profile</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
         </div>
-        <form ngClass="form-inline mt-2 mt-md-0" #loginForm="ngForm" *ngIf="(accountService.currentUser$ | async) === null" class="d-flex" (ngSubmit)="login()" autocomplete="off">
-            <input class="form-control me-2" 
+        <div class="col-lg-12 offset-8">
+        <form class="d-flex" #loginForm="ngForm" *ngIf="(accountService.currentUser$ | async) === null" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+          <div class="col-lg-3 mx-2"> 
+          <input class="form-control" 
           type="text"
           [(ngModel)] = "model.username" 
           name="username"
           placeholder="Username">
-          <input class="form-control me-2"
+        </div>
+        <div class="col-lg-3 mx-2">
+          <input class="form-control"
            type="password"
            [(ngModel)] = "model.password" 
            name="password"
            placeholder="Password">
-          <button class="btn btn-outline-success" type="submit">Login</button>
+          </div>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
         </form>
+      </div>
       </div>
     </div>
   </nav>

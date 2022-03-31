@@ -9,7 +9,7 @@ const routes: Routes =[
   {path: '', component: HomeComponent},
   {path: 'offers', component: OfferComponent},
   //{path: 'offers/:id', component: OfferDetailComponent},
-  {path: 'offerDetails', component: OfferDetailComponent},
+  {path: 'detail', component: OfferDetailComponent},
   {path: '**', component: HomeComponent, pathMatch: 'full'} 
 ]
 

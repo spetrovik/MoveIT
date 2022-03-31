@@ -1,4 +1,5 @@
 export interface Offer{
+    id:number,
     from: string;
     to:string;
     distance: number;

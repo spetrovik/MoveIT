@@ -14,7 +14,7 @@ allOffers: any;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-   this.getOffers();
+  
   }
 registerToggle(){
   this.registerMode = !this.registerMode;
@@ -23,6 +23,10 @@ cancelRegisterMode(event: boolean)
 {
   this.registerMode = event;
 }
+openOffers(){
+  this.getOffers();
+}
+
 getOffers(): void{
   this.http.get('https://localhost:5001/api/offers/offer')
   .subscribe(response => {
