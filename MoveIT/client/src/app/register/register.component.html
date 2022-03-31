@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+<form class="mt-5" [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
     <h2 class="text-center text-primary">
      SignUp
     </h2>
@@ -6,7 +6,7 @@
         <input 
         [class.is-invalid] ='registerForm.get("username").errors && registerForm.get("username").touched'
         type="text" 
-        class="form-control" 
+        class="form-control mb-2" 
       formControlName="username" 
       placeholder="Username">
       <div class="invalid-feedback">Please enter a username</div> 
@@ -15,7 +15,7 @@
         <input 
         [class.is-invalid] ='registerForm.get("password").errors && registerForm.get("password").touched'
         type="password" 
-        class="form-control" 
+        class="form-control mb-2" 
         formControlName="password" 
         placeholder="Password">
         <div *ngIf="registerForm.get('password').hasError('required')" class="invalid-feedback">Please enter a password</div> 
@@ -26,15 +26,15 @@
         <input 
         [class.is-invalid] ='registerForm.get("confirmPassword").errors && registerForm.get("confirmPassword").touched'
         type="password" 
-        class="form-control" 
+        class="form-control mb-2" 
         formControlName="confirmPassword" 
         placeholder="Confirm Password">
         <div *ngIf="registerForm.get('confirmPassword').hasError('required')" class="invalid-feedback">Please enter a password</div> 
         <div *ngIf="registerForm.get('confirmPassword').hasError('isMatching')" class="invalid-feedback">Confirm password must match password</div> 
     </div>
     <div class="form-group text-center">
-        <button [disabled]="!registerForm.valid" class="btn btn-success mr-2" type="submit">Register</button>
-        <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button>
+        <button [disabled]="!registerForm.valid" class="btn btn-success mr-2 mb-2" type="submit">Register</button>
+        <button class="btn btn-default mr-2 mb-2" (click)="cancel()" type="button">Cancel</button>
     </div>
 </form>
 
